@@ -19,18 +19,22 @@ for i, name in enumerate(["last.txt", "first-f.txt", "first-m.txt"]):
         data.append(f.readlines())
 
 
-def gen_names(x):
+def gen_names(x, formatted=True):
     names = []
     for i in range(x):
         g = random.randint(0, 1) + 1
-        last_name = data[0][random.randint(0, 93)]
+        last_name = data[0][random.randint(0, 93)].replace('\n', '')
 
-        first_name = data[g][random.randint(0, 49)]
+        first_name = data[g][random.randint(0, 49)].replace('\n', '')
         if g == 1:
             last_name = re.sub('ski$', 'ska', last_name)
             last_name = re.sub('cki$', "cka", last_name)
             last_name = re.sub('dzki$', "dzka", last_name)
-        names.append('{} {}'.format(first_name, last_name).replace('\n', ''))
+        if formatted:
+            name = '{} {}'.format(first_name, last_name)
+        else:
+            name = [first_name, last_name]
+        names.append(name)
     return names
 
 
