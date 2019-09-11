@@ -30,7 +30,7 @@ def gen_names(x):
             last_name = re.sub('ski$', 'ska', last_name)
             last_name = re.sub('cki$', "cka", last_name)
             last_name = re.sub('dzki$', "dzka", last_name)
-        names.append('{} {}'.format(first_name, last_name))
+        names.append('{} {}'.format(first_name, last_name).replace('\n', ''))
     return names
 
 
